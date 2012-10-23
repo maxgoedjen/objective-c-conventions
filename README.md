@@ -1,13 +1,10 @@
 ## Whitespace
 
- * Tabs, not spaces.
- * End files with a newline.
+ * Spaces, not tabs.
 
 ## Documentation
 
  * All method declarations should be documented.
- * Comments should be hard-wrapped at 80 characters.
- * Comments should be [Tomdoc](http://tomdoc.org/)-style.
  * Use `#pragma mark`s to categorize methods and protocol implementations.
 
 ## Declarations
@@ -18,6 +15,21 @@
  * Declare properties `readonly` if they are only set once in `-init`.
  * Don't use `@synthesize` unless the compiler requires it. Note that optional properties in protocols must be explicitly synthesized in order to exist.
  * Instance variables should be prefixed with an underscore (just like when implicitly synthesized).
+ ```objc
+ Blah *a = (stuff == thing ? foo : bar);
+ ```
+ 
+ * Objects should be declared as `Type *name`
+ 
+```objc
+NSObject *test;
+```
+
+ * Objective-C methods should be declared as `- (ReturnType *)methodName:(ArgumentType *)argument;`
+ 
+```objc
+- (NSObject *)testMethodWithObject:(NSObject *)object;
+``` 
  * C function declarations should have no space before the opening parenthesis, and should be namespaced just like a class.
 
 ```objc
@@ -27,15 +39,16 @@ void GHAwesomeFunction(BOOL hasSomeArgs);
 ## Expressions
 
  * Don't access an ivar unless you're in `-init` or `-dealloc`.
- * Use dot-syntax for "simple" getters and setters, including class methods (like `NSFileManager.defaultManager`).
+ * Use dot-syntax for "simple" getters and setters, excluding class methods (like `NSFileManager.defaultManager`).
  * Use object literals, boxed expressions, and subscripting over the older, grosser alternatives.
  * Comparisons should be explicit for everything except `BOOL`s.
  * Prefer positive comparisons to negative.
- * Long form ternary operators should be wrapped in parentheses and only used for assignment and arguments.
 
-```objc
-Blah *a = (stuff == thing ? foo : bar);
-```
+ * Long form ternary operators should be wrapped in parentheses and only used for assignment and arguments.
+ 
+ ```objc
+ Blah *a = (stuff == thing ? foo : bar);
+ ```
 
 * Short form, `nil` coalescing ternary operators should avoid parentheses.
 
